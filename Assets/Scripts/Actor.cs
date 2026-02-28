@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Actor : MonoBehaviour
 {
-    int currentHealth;
+    public int currentHealth;
     public int maxHealth;
 
     void Awake()
