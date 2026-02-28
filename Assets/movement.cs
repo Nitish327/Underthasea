@@ -1,36 +1,84 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class FirstPersonMovement : MonoBehaviour
 {
     public float moveSpeed = 5f;
-    public float mouseSensitivity = 2f;
+    public float mouseSensitivity = 0.1f;
+    public float jumpForce = 5f;
+    public float groundCheckDistance = 1.1f;
+    public LayerMask groundLayer;
 
     float xRotation = 0f;
     Camera playerCamera;
+    Rigidbody rb;
 
-/*************  ✨ Windsurf Command ⭐  *************/
-        /// <summary>
-        /// Called when the script instance is being initialized.
-        /// Sets up the player camera and locks the mouse cursor.
-        /// </summary>
-/*******  deeec770-0e91-49b3-9966-4499cd3445be  *******/
+    Vector2 moveInput;
+    Vector2 lookInput;
+    bool jumpPressed;
+
     void Start()
     {
         playerCamera = GetComponentInChildren<Camera>();
+        rb = GetComponent<Rigidbody>();
+
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
 
     void Update()
     {
-        float x = Input.GetAxis("Horizontal");
-        float z = Input.GetAxis("Vertical");
+        Look();
+    }
 
-        Vector3 move = transform.right * x + transform.forward * z;
-        transform.position += move * moveSpeed * Time.deltaTime;
+    void FixedUpdate()
+    {
+        Move();
+        Jump();
+    }
 
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * 100f * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * 100f * Time.deltaTime;
+    public void OnMove(InputValue value)
+    {
+        moveInput = value.Get<Vector2>();
+    }
+
+    public void OnLook(InputValue value)
+    {
+        lookInput = value.Get<Vector2>();
+    }
+
+    public void OnJump(InputValue value)
+    {
+        if (value.isPressed)
+            jumpPressed = true;
+    }
+
+    void Move()
+    {
+        Vector3 move = transform.right * moveInput.x + transform.forward * moveInput.y;
+        Vector3 velocity = move * moveSpeed;
+
+        rb.linearVelocity = new Vector3(velocity.x, rb.linearVelocity.y, velocity.z);
+    }
+
+    void Jump()
+    {
+        if (jumpPressed && IsGrounded())
+        {
+            rb.linearVelocity = new Vector3(rb.linearVelocity.x, jumpForce, rb.linearVelocity.z);
+            jumpPressed = false;
+        }
+    }
+
+    bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position, Vector3.down, groundCheckDistance, groundLayer);
+    }
+
+    void Look()
+    {
+        float mouseX = lookInput.x * mouseSensitivity * 100f * Time.deltaTime;
+        float mouseY = lookInput.y * mouseSensitivity * 100f * Time.deltaTime;
 
         xRotation -= mouseY;
         xRotation = Mathf.Clamp(xRotation, -90f, 90f);
