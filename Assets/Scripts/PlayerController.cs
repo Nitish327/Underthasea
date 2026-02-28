@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour
     AudioSource audioSource;
 
     [Header("Controller")]
+
+    public DisableArmsEnableGun arms;
     public float moveSpeed = 5;
     public float gravity = -9.8f;
     public float jumpHeight = 1.2f;
@@ -136,9 +138,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    // ------------------- //
-    // ATTACKING BEHAVIOUR //
-    // ------------------- //
+    
 
     [Header("Attacking")]
     public float attackDistance = 3f;
@@ -155,8 +155,11 @@ public class PlayerController : MonoBehaviour
     bool readyToAttack = true;
     int attackCount;
 
+    
+
     public void Attack()
     {
+        
         if(!readyToAttack || attacking) return;
 
         readyToAttack = false;
@@ -188,7 +191,7 @@ public class PlayerController : MonoBehaviour
 
     void AttackRaycast()
     {
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer))
+        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer) && arms.showArms == true)
         { 
             HitTarget(hit.point);
 
