@@ -656,8 +656,8 @@ MonoBehaviour:
   hideKey: 101
   switchKey: 113
   showArms: 1
-  unlockSpear: 0
-  unlockedHammer: 0
+  unlockSpear: 1
+  unlockedHammer: 1
   weapon: sword
 --- !u!4 &7380679980211927071 stripped
 Transform:
