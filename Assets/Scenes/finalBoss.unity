@@ -360,6 +360,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 450180036349914294, guid: 9db31b6cf525f4e42b9c728a536cfffc, type: 3}
+      propertyPath: patrolRadius
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 450180036349914294, guid: 9db31b6cf525f4e42b9c728a536cfffc, type: 3}
       propertyPath: detectionRange
       value: 1000
       objectReference: {fileID: 0}
@@ -425,7 +429,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4459500030541706874, guid: 9db31b6cf525f4e42b9c728a536cfffc, type: 3}
       propertyPath: m_Acceleration
-      value: 2000
+      value: 10000
       objectReference: {fileID: 0}
     - target: {fileID: 4459500030541706874, guid: 9db31b6cf525f4e42b9c728a536cfffc, type: 3}
       propertyPath: m_AngularSpeed
@@ -587,7 +591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2245372204532694639, guid: a882f96fbf3a547b296eeda962c7f41e, type: 3}
       propertyPath: ammo
-      value: 200
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2245372204532694639, guid: a882f96fbf3a547b296eeda962c7f41e, type: 3}
       propertyPath: ammoText
