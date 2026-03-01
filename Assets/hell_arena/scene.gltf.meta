@@ -1,0 +1,51 @@
+fileFormatVersion: 2
+guid: 0598e55b07b2748469a6cd6d42081409
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 1
+    animationMethod: 2
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets/hell_arena/scene.bin
+    assetPath: Assets/hell_arena/scene.bin
+  - type: 1
+    originalUri: Assets/hell_arena/textures/Material_baseColor.jpeg
+    assetPath: Assets/hell_arena/textures/Material_baseColor.jpeg
+  - type: 1
+    originalUri: Assets/hell_arena/textures/Material.001_normal.jpeg
+    assetPath: Assets/hell_arena/textures/Material.001_normal.jpeg
+  - type: 1
+    originalUri: Assets/hell_arena/textures/Material.003_baseColor.jpeg
+    assetPath: Assets/hell_arena/textures/Material.003_baseColor.jpeg
+  - type: 1
+    originalUri: Assets/hell_arena/textures/Material.003_emissive.png
+    assetPath: Assets/hell_arena/textures/Material.003_emissive.png
+  reportItems:
+  - type: 2
+    code: 20
+    messages:
+    - KHR_materials_specular
+  - type: 2
+    code: 20
+    messages:
+    - KHR_materials_emissive_strength

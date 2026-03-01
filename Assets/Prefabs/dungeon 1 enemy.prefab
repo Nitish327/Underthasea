@@ -30,7 +30,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 9e008f7b4a6a7487b9fad2c9878d2ec2, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.315
+      value: -1.15
       objectReference: {fileID: 0}
     - target: {fileID: 8897093224900880590, guid: 9e008f7b4a6a7487b9fad2c9878d2ec2, type: 3}
       propertyPath: m_LocalPosition.z
@@ -97,6 +97,10 @@ PrefabInstance:
     - target: {fileID: 1386205444343552094, guid: 27eb3e2c654d6b540921ce75e5fe1636, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4637167279820279431, guid: 27eb3e2c654d6b540921ce75e5fe1636, type: 3}
+      propertyPath: waitTime
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4637167279820279431, guid: 27eb3e2c654d6b540921ce75e5fe1636, type: 3}
       propertyPath: chaseSpeed
@@ -176,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7208987866570245299, guid: 27eb3e2c654d6b540921ce75e5fe1636, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -0.419
+      value: -0.19
       objectReference: {fileID: 0}
     - target: {fileID: 8900952276274992203, guid: 27eb3e2c654d6b540921ce75e5fe1636, type: 3}
       propertyPath: m_Speed

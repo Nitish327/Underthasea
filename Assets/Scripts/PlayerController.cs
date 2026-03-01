@@ -8,20 +8,26 @@ public class PlayerController : MonoBehaviour
     PlayerInput playerInput;
     PlayerInput.MainActions input;
 
-     public KeyCode switchKey = KeyCode.Q;
-
-
+    public KeyCode switchKey = KeyCode.Q;
 
     CharacterController controller;
     Animator animator;
     AudioSource audioSource;
 
     [Header("Controller")]
-
     public DisableArmsEnableGun arms;
-    public float moveSpeed = 5;
+    public float walkSpeed = 5f;
+    public float sprintSpeed = 10f;
+    public float sprintDuration = 3f;
+    public float sprintCooldown = 5f;
     public float gravity = -9.8f;
     public float jumpHeight = 1.2f;
+
+    float sprintTimer;
+    float cooldownTimer;
+    bool isSprinting;
+    bool sprintOnCooldown;
+
     [Header("Attacking")]
     public swordInfo sword;
     public axeInfo axe;
@@ -31,14 +37,10 @@ public class PlayerController : MonoBehaviour
     public float attackDelay = 0.4f;
     public float attackSpeed = 1f;
     public int attackDamage = 1;
-    public float knockbackForce = 5f; 
+    public float knockbackForce = 5f;
     public LayerMask attackLayer;
 
-
-    
-
     Vector3 _PlayerVelocity;
-
     bool isGrounded;
 
     [Header("Camera")]
@@ -48,7 +50,7 @@ public class PlayerController : MonoBehaviour
     float xRotation = 0f;
 
     void Awake()
-    { 
+    {
         controller = GetComponent<CharacterController>();
         animator = GetComponentInChildren<Animator>();
         audioSource = GetComponent<AudioSource>();
@@ -64,6 +66,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         isGrounded = controller.isGrounded;
+
         if (Input.GetKeyDown(switchKey) && arms.showArms == true)
         {
             if (arms.weapon == "hammer")
@@ -96,54 +99,102 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        // Repeat Inputs
-        if(input.Attack.IsPressed())
-        { Attack(); }
+        if (input.Attack.IsPressed())
+            Attack();
 
         SetAnimations();
     }
 
-    void FixedUpdate() 
-    { MoveInput(input.Movement.ReadValue<Vector2>()); }
+    void FixedUpdate()
+    {
+        MoveInput(input.Movement.ReadValue<Vector2>());
+    }
 
-    void LateUpdate() 
-    { LookInput(input.Look.ReadValue<Vector2>()); }
+    void LateUpdate()
+    {
+        LookInput(input.Look.ReadValue<Vector2>());
+    }
 
-    void MoveInput(Vector2 input)
+    void MoveInput(Vector2 inputVec)
     {
         Vector3 moveDirection = Vector3.zero;
-        moveDirection.x = input.x;
-        moveDirection.z = input.y;
+        moveDirection.x = inputVec.x;
+        moveDirection.z = inputVec.y;
 
-        controller.Move(transform.TransformDirection(moveDirection) * moveSpeed * Time.deltaTime);
+        HandleSprint();
+
+        float currentSpeed = isSprinting ? sprintSpeed : walkSpeed;
+
+        controller.Move(transform.TransformDirection(moveDirection) * currentSpeed * Time.deltaTime);
+
         _PlayerVelocity.y += gravity * Time.deltaTime;
-        if(isGrounded && _PlayerVelocity.y < 0)
+
+        if (isGrounded && _PlayerVelocity.y < 0)
             _PlayerVelocity.y = -2f;
+
         controller.Move(_PlayerVelocity * Time.deltaTime);
     }
 
-    void LookInput(Vector3 input)
+    void HandleSprint()
     {
-        float mouseX = input.x;
-        float mouseY = input.y;
+        if (sprintOnCooldown)
+        {
+            cooldownTimer -= Time.deltaTime;
+
+            if (cooldownTimer <= 0f)
+                sprintOnCooldown = false;
+
+            isSprinting = false;
+            return;
+        }
+
+        if (Keyboard.current.leftShiftKey.isPressed && sprintTimer < sprintDuration)
+        {
+            isSprinting = true;
+            sprintTimer += Time.deltaTime;
+
+            if (sprintTimer >= sprintDuration)
+            {
+                sprintOnCooldown = true;
+                cooldownTimer = sprintCooldown;
+                isSprinting = false;
+            }
+        }
+        else
+        {
+            isSprinting = false;
+        }
+
+        if (!isSprinting && !sprintOnCooldown)
+        {
+            sprintTimer = Mathf.Max(0, sprintTimer - Time.deltaTime * 0.5f);
+        }
+    }
+
+    void LookInput(Vector3 inputVec)
+    {
+        float mouseX = inputVec.x;
+        float mouseY = inputVec.y;
 
         xRotation -= (mouseY * Time.deltaTime * sensitivity);
         xRotation = Mathf.Clamp(xRotation, -80, 80);
 
         cam.transform.localRotation = Quaternion.Euler(xRotation, 0, 0);
-
         transform.Rotate(Vector3.up * (mouseX * Time.deltaTime * sensitivity));
     }
 
-    void OnEnable() 
-    { input.Enable(); }
+    void OnEnable()
+    {
+        input.Enable();
+    }
 
     void OnDisable()
-    { input.Disable(); }
+    {
+        input.Disable();
+    }
 
     void Jump()
     {
-       
         if (isGrounded)
             _PlayerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
     }
@@ -154,8 +205,6 @@ public class PlayerController : MonoBehaviour
         input.Attack.started += ctx => Attack();
     }
 
-    
-
     public const string IDLE = "Idle";
     public const string WALK = "Walk";
     public const string ATTACK1 = "Attack 1";
@@ -163,31 +212,25 @@ public class PlayerController : MonoBehaviour
 
     string currentAnimationState;
 
-    public void ChangeAnimationState(string newState) 
+    public void ChangeAnimationState(string newState)
     {
-       
         if (currentAnimationState == newState) return;
 
-       
         currentAnimationState = newState;
         animator.CrossFadeInFixedTime(currentAnimationState, 0.2f);
     }
 
     void SetAnimations()
     {
-        
-        if(!attacking)
+        if (!attacking)
         {
-            if(_PlayerVelocity.x == 0 &&_PlayerVelocity.z == 0)
-            { ChangeAnimationState(IDLE); }
+            if (controller.velocity.magnitude < 0.1f)
+                ChangeAnimationState(IDLE);
             else
-            { ChangeAnimationState(WALK); }
+                ChangeAnimationState(WALK);
         }
     }
 
-    
-
-    
     public GameObject hitEffect;
     public AudioClip swordSwing;
     public AudioClip hitSound;
@@ -196,12 +239,9 @@ public class PlayerController : MonoBehaviour
     bool readyToAttack = true;
     int attackCount;
 
-    
-
     public void Attack()
     {
-        
-        if(!readyToAttack || attacking) return;
+        if (!readyToAttack || attacking) return;
 
         readyToAttack = false;
         attacking = true;
@@ -212,7 +252,7 @@ public class PlayerController : MonoBehaviour
         audioSource.pitch = Random.Range(0.9f, 1.1f);
         audioSource.PlayOneShot(swordSwing);
 
-        if(attackCount == 0)
+        if (attackCount == 0)
         {
             ChangeAnimationState(ATTACK1);
             attackCount++;
@@ -232,15 +272,15 @@ public class PlayerController : MonoBehaviour
 
     void AttackRaycast()
     {
-        if(Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer) && arms.showArms == true)
-        { 
+        if (Physics.Raycast(cam.transform.position, cam.transform.forward, out RaycastHit hit, attackDistance, attackLayer) && arms.showArms == true)
+        {
             HitTarget(hit.point);
 
-            if(hit.transform.TryGetComponent<Actor>(out Actor T))
-            { T.TakeDamage(attackDamage); }
+            if (hit.transform.TryGetComponent<Actor>(out Actor T))
+                T.TakeDamage(attackDamage);
 
             ApplyKnockback(hit);
-        } 
+        }
     }
 
     void HitTarget(Vector3 pos)
@@ -251,19 +291,19 @@ public class PlayerController : MonoBehaviour
         GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
         Destroy(GO, 20);
     }
+
     void ApplyKnockback(RaycastHit hit)
-{
-    if (arms.weapon != "hammer") return; // Only apply knockback for hammer
-
-    Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
-    if (rb != null)
     {
-        Vector3 knockDirection = hit.transform.position - transform.position;
-        knockDirection.y = 0; 
-        knockDirection.Normalize();
+        if (arms.weapon != "hammer") return;
 
-        
-        rb.AddForce(knockDirection * knockbackForce, ForceMode.Impulse);
+        Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
+        if (rb != null)
+        {
+            Vector3 knockDirection = hit.transform.position - transform.position;
+            knockDirection.y = 0;
+            knockDirection.Normalize();
+
+            rb.AddForce(knockDirection * knockbackForce, ForceMode.Impulse);
+        }
     }
-}
 }
