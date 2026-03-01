@@ -30,10 +30,12 @@ public class Actor : MonoBehaviour
     {
         // Death function
         // TEMPORARY: Destroy Object
+
         if(maxHealth == 200)
         {
             SceneManager.LoadScene(sceneToLoad);
-        }
+        }else{
+            Destroy(this.gameObject);}
        
         
     }

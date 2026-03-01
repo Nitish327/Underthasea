@@ -14,6 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/victory.unity
     guid: 027cd05c787ca46d0b5794bac9bcf4de
+  - enabled: 1
+    path: Assets/Scenes/Room1.unity
+    guid: f5d4af078da40415991f8b2ac2f2c703
+  - enabled: 1
+    path: Assets/Scenes/parkour.unity
+    guid: 1342e15be98e2d34d8b30e539eae22e8
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0
