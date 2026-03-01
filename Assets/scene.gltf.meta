@@ -1,0 +1,105 @@
+fileFormatVersion: 2
+guid: 2207e4703fc4a244980685e110aab3f2
+ScriptedImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 2
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 11500000, guid: 715df9372183c47e389bb6e19fbc3b52, type: 3}
+  editorImportSettings:
+    generateSecondaryUVSet: 0
+  importSettings:
+    nodeNameMethod: 1
+    animationMethod: 2
+    generateMipMaps: 1
+    texturesReadable: 0
+    defaultMinFilterMode: 9729
+    defaultMagFilterMode: 9729
+    anisotropicFilterLevel: 1
+  instantiationSettings:
+    mask: -1
+    layer: 0
+    skinUpdateWhenOffscreen: 1
+    lightIntensityFactor: 1
+    sceneObjectCreation: 2
+  assetDependencies:
+  - type: 0
+    originalUri: Assets\scene.bin
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\material_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto1_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto2_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto3_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto4_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto5_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto6_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto7_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto8_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto9_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto10_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto12_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto13_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto14_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto16_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto17_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto18_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto19_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto21_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto22_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\auto23_baseColor.png
+    assetPath: 
+  - type: 1
+    originalUri: Assets\textures\Water_Pool_Light_baseColor.jpeg
+    assetPath: 
+  reportItems:
+  - type: 0
+    code: 8
+    messages:
+    - Cannot find resource at path Assets\scene.bin
+    - 0

@@ -1,0 +1,8 @@
+Model Information:
+* title:	House in the cave
+* source:	https://sketchfab.com/3d-models/house-in-the-cave-a5c36a6c55954d9393d96c640c04a517
+* author:	katydid (https://sketchfab.com/Katydid.)
+
+Model License:
+* license type:	SKETCHFAB Standard (https://sketchfab.com/licenses)
+* requirements:	Under basic restrictions, use worldwide, on all types of media, commercially or not, and in all types of derivative works
