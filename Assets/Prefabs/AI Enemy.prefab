@@ -148,8 +148,13 @@ MonoBehaviour:
   patrolRadius: 10
   waitTime: 2
   detectionRange: 8
-  chaseSpeed: 5
   patrolSpeed: 3
+  chaseSpeed: 5
+  attackRange: 2
+  attackCooldown: 1.5
+  damageAmount: 10
+  jumpForce: 5
+  jumpDetectionDistance: 1
 --- !u!195 &8900952276274992203
 NavMeshAgent:
   m_ObjectHideFlags: 0
