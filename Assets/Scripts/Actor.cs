@@ -7,6 +7,8 @@ public class Actor : MonoBehaviour
     public int currentHealth;
     public int maxHealth;
 
+    public int arrowDamage;
+
     void Awake()
     {
         currentHealth = maxHealth;
@@ -26,4 +28,12 @@ public class Actor : MonoBehaviour
         // TEMPORARY: Destroy Object
         Destroy(gameObject);
     }
+      void OnCollisionEnter(Collision other)
+    {
+        if(other.gameObject.tag == "arrow")
+        {
+            TakeDamage(arrowDamage);
+        }
+    }
+
 }

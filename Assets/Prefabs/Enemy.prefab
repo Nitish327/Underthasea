@@ -197,7 +197,7 @@ GameObject:
   - component: {fileID: -3851985485936493932}
   m_Layer: 6
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -232,6 +232,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 3
+  arrowDamage: 1
 --- !u!33 &8953863879292068245
 MeshFilter:
   m_ObjectHideFlags: 0
