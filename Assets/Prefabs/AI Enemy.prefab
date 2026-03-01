@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentHealth: 0
   maxHealth: 10
+  arrowDamage: 1
 --- !u!33 &6904854491582490249
 MeshFilter:
   m_ObjectHideFlags: 0
