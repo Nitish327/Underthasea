@@ -2539,7 +2539,7 @@ PrefabInstance:
       objectReference: {fileID: 2125438372}
     - target: {fileID: 2245372204532694639, guid: a882f96fbf3a547b296eeda962c7f41e, type: 3}
       propertyPath: ammo
-      value: 500
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 2245372204532694639, guid: a882f96fbf3a547b296eeda962c7f41e, type: 3}
       propertyPath: ammoText
@@ -2797,6 +2797,18 @@ PrefabInstance:
     - target: {fileID: 2970530450684622612, guid: c8b6bbbe98836b34f87ea9d4378f5d79, type: 3}
       propertyPath: m_Name
       value: Canvas 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409620153057249639, guid: c8b6bbbe98836b34f87ea9d4378f5d79, type: 3}
+      propertyPath: m_Color.b
+      value: 0.9803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409620153057249639, guid: c8b6bbbe98836b34f87ea9d4378f5d79, type: 3}
+      propertyPath: m_Color.g
+      value: 0.9803922
+      objectReference: {fileID: 0}
+    - target: {fileID: 6409620153057249639, guid: c8b6bbbe98836b34f87ea9d4378f5d79, type: 3}
+      propertyPath: m_Color.r
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
