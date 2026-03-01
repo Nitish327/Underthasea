@@ -928,6 +928,10 @@ PrefabInstance:
       value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2245372204532694639, guid: a882f96fbf3a547b296eeda962c7f41e, type: 3}
+      propertyPath: arrow
+      value: 
+      objectReference: {fileID: 4259831336070502702, guid: 8e1bfb8c5595746c7a98f6f3b416aedf, type: 3}
+    - target: {fileID: 2245372204532694639, guid: a882f96fbf3a547b296eeda962c7f41e, type: 3}
       propertyPath: ammoText
       value: 
       objectReference: {fileID: 271499083}
