@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     public float attackDelay = 0.4f;
     public float attackSpeed = 1f;
     public int attackDamage = 1;
+    public float knockbackForce = 5f; 
     public LayerMask attackLayer;
 
 
@@ -142,7 +143,7 @@ public class PlayerController : MonoBehaviour
 
     void Jump()
     {
-        // Adds force to the player rigidbody to jump
+       
         if (isGrounded)
             _PlayerVelocity.y = Mathf.Sqrt(jumpHeight * -3.0f * gravity);
     }
@@ -153,9 +154,7 @@ public class PlayerController : MonoBehaviour
         input.Attack.started += ctx => Attack();
     }
 
-    // ---------- //
-    // ANIMATIONS //
-    // ---------- //
+    
 
     public const string IDLE = "Idle";
     public const string WALK = "Walk";
@@ -166,17 +165,17 @@ public class PlayerController : MonoBehaviour
 
     public void ChangeAnimationState(string newState) 
     {
-        // STOP THE SAME ANIMATION FROM INTERRUPTING WITH ITSELF //
+       
         if (currentAnimationState == newState) return;
 
-        // PLAY THE ANIMATION //
+       
         currentAnimationState = newState;
         animator.CrossFadeInFixedTime(currentAnimationState, 0.2f);
     }
 
     void SetAnimations()
     {
-        // If player is not attacking
+        
         if(!attacking)
         {
             if(_PlayerVelocity.x == 0 &&_PlayerVelocity.z == 0)
@@ -239,6 +238,8 @@ public class PlayerController : MonoBehaviour
 
             if(hit.transform.TryGetComponent<Actor>(out Actor T))
             { T.TakeDamage(attackDamage); }
+
+            ApplyKnockback(hit);
         } 
     }
 
@@ -250,4 +251,19 @@ public class PlayerController : MonoBehaviour
         GameObject GO = Instantiate(hitEffect, pos, Quaternion.identity);
         Destroy(GO, 20);
     }
+    void ApplyKnockback(RaycastHit hit)
+{
+    if (arms.weapon != "hammer") return; // Only apply knockback for hammer
+
+    Rigidbody rb = hit.transform.GetComponent<Rigidbody>();
+    if (rb != null)
+    {
+        Vector3 knockDirection = hit.transform.position - transform.position;
+        knockDirection.y = 0; 
+        knockDirection.Normalize();
+
+        
+        rb.AddForce(knockDirection * knockbackForce, ForceMode.Impulse);
+    }
+}
 }
