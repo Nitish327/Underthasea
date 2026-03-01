@@ -3,6 +3,7 @@ using UnityEngine.InputSystem;
 
 public class FirstPersonMovement : MonoBehaviour
 {
+    
     public float moveSpeed = 5f;
     public float mouseSensitivity = 0.1f;
     public float jumpForce = 5f;
