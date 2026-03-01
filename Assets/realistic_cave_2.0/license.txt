@@ -1,0 +1,11 @@
+Model Information:
+* title:	Realistic Cave 2.0
+* source:	https://sketchfab.com/3d-models/realistic-cave-20-592df02d5d2a4ed099c23520321ffa23
+* author:	Valsev (https://sketchfab.com/Valsev)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Realistic Cave 2.0" (https://sketchfab.com/3d-models/realistic-cave-20-592df02d5d2a4ed099c23520321ffa23) by Valsev (https://sketchfab.com/Valsev) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
