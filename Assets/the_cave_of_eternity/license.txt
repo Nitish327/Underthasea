@@ -1,0 +1,11 @@
+Model Information:
+* title:	The Cave of Eternity
+* source:	https://sketchfab.com/3d-models/the-cave-of-eternity-db7952f26213449ea35a7f6099b91005
+* author:	salinaforr (https://sketchfab.com/salinaforr)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "The Cave of Eternity" (https://sketchfab.com/3d-models/the-cave-of-eternity-db7952f26213449ea35a7f6099b91005) by salinaforr (https://sketchfab.com/salinaforr) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
