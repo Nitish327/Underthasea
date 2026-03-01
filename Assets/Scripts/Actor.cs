@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class Actor : MonoBehaviour
 {
@@ -8,6 +10,8 @@ public class Actor : MonoBehaviour
     public int maxHealth;
 
     public int arrowDamage;
+
+    public string sceneToLoad = "";
 
     void Awake()
     {
@@ -26,7 +30,12 @@ public class Actor : MonoBehaviour
     {
         // Death function
         // TEMPORARY: Destroy Object
-        Destroy(gameObject);
+        if(maxHealth == 200)
+        {
+            SceneManager.LoadScene(sceneToLoad);
+        }
+       
+        
     }
       void OnCollisionEnter(Collision other)
     {

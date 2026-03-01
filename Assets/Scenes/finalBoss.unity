@@ -242,6 +242,10 @@ PrefabInstance:
       propertyPath: arrowDamage
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 677522767703006507, guid: 9db31b6cf525f4e42b9c728a536cfffc, type: 3}
+      propertyPath: sceneToLoad
+      value: victory
+      objectReference: {fileID: 0}
     - target: {fileID: 1056220381815611085, guid: 9db31b6cf525f4e42b9c728a536cfffc, type: 3}
       propertyPath: m_LocalPosition.x
       value: -634.3
