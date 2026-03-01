@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
     PlayerInput playerInput;
     PlayerInput.MainActions input;
 
+     public KeyCode switchKey = KeyCode.Q;
+
+
+
     CharacterController controller;
     Animator animator;
     AudioSource audioSource;
@@ -18,6 +22,19 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed = 5;
     public float gravity = -9.8f;
     public float jumpHeight = 1.2f;
+    [Header("Attacking")]
+    public swordInfo sword;
+    public axeInfo axe;
+    public warHammerInfo hammer;
+    public spearInfo spear;
+    public float attackDistance = 3f;
+    public float attackDelay = 0.4f;
+    public float attackSpeed = 1f;
+    public int attackDamage = 1;
+    public LayerMask attackLayer;
+
+
+    
 
     Vector3 _PlayerVelocity;
 
@@ -46,6 +63,37 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         isGrounded = controller.isGrounded;
+        if (Input.GetKeyDown(switchKey) && arms.showArms == true)
+        {
+            if (arms.weapon == "hammer")
+            {
+                attackDistance = hammer.attackDistance;
+                attackDamage = hammer.attackDamage;
+                attackDelay = hammer.attackDelay;
+                attackSpeed = hammer.attackSpeed;
+            }
+            else if (arms.weapon == "sword")
+            {
+                attackDistance = sword.attackDistance;
+                attackDamage = sword.attackDamage;
+                attackDelay = sword.attackDelay;
+                attackSpeed = sword.attackSpeed;
+            }
+            else if (arms.weapon == "axe")
+            {
+                attackDistance = axe.attackDistance;
+                attackDamage = axe.attackDamage;
+                attackDelay = axe.attackDelay;
+                attackSpeed = axe.attackSpeed;
+            }
+            else if (arms.weapon == "spear")
+            {
+                attackDistance = spear.attackDistance;
+                attackDamage = spear.attackDamage;
+                attackDelay = spear.attackDelay;
+                attackSpeed = spear.attackSpeed;
+            }
+        }
 
         // Repeat Inputs
         if(input.Attack.IsPressed())
@@ -140,13 +188,7 @@ public class PlayerController : MonoBehaviour
 
     
 
-    [Header("Attacking")]
-    public float attackDistance = 3f;
-    public float attackDelay = 0.4f;
-    public float attackSpeed = 1f;
-    public int attackDamage = 1;
-    public LayerMask attackLayer;
-
+    
     public GameObject hitEffect;
     public AudioClip swordSwing;
     public AudioClip hitSound;
