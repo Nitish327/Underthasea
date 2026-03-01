@@ -1,0 +1,11 @@
+Model Information:
+* title:	Hell arena
+* source:	https://sketchfab.com/3d-models/hell-arena-b24597cc453a4919a97037be03abf38d
+* author:	3DMAN (https://sketchfab.com/3dmanx888)
+
+Model License:
+* license type:	CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
+* requirements:	Author must be credited. Commercial use is allowed.
+
+If you use this 3D model in your project be sure to copy paste this credit wherever you share it:
+This work is based on "Hell arena" (https://sketchfab.com/3d-models/hell-arena-b24597cc453a4919a97037be03abf38d) by 3DMAN (https://sketchfab.com/3dmanx888) licensed under CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)
